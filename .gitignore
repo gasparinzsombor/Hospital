@@ -1,0 +1,14 @@
+﻿/Hospital.Data/bin/
+/Hospital.Data/obj/
+/Hospital.Desktop/bin/
+/Hospital.Desktop/obj/
+/Hospital.Persistence/bin/
+/Hospital.Persistence/obj/
+/Hospital.Web/bin/
+/Hospital.Web/obj/
+/Hospital.WebAPI/bin/
+/Hospital.WebAPI/obj/
+/Hospital.WebAPI.Tests/bin/
+/Hospital.WebAPI.Tests/obj/
+Hospital.sln.DotSettings.user
+.idea
