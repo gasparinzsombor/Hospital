@@ -1,0 +1,51 @@
+html {
+  font-size: 14px;
+}
+.field-validation-error {
+  color: #e80c4d;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.failureNotification ul {
+ list-style: none;
+}
+
+.failureNotification {
+  color: red;
+}
+
+/*.reservation-table td, .reservation-table th {
+  border:  1px solid black;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  color: transparent;
+}
+
+.free {
+  background: green;
+}
+
+.reserved {
+  background: red;
+}
+
+.reserved-by-user {
+  background: blue;
+}*/

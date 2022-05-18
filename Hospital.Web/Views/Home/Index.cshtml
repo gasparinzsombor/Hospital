@@ -1,0 +1,9 @@
+﻿@model Hospital.Models.ViewModels.HomeIndexViewModel
+
+@{
+    ViewBag.Title = "Főoldal";
+}
+
+<partial name="_DoctorsListPartial" model="@Model.Doctors"/>
+
+<partial name="_SpecializationsTablePartial" model="@Model.Specializations"/>

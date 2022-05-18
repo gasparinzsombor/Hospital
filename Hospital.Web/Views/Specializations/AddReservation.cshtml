@@ -1,0 +1,56 @@
+﻿@using Hospital.Models.Util
+@model Hospital.Models.ViewModels.Reservations.AddReservationBySpecializationViewModel
+
+@{
+    ViewBag.Title = "Foglalás hozzáadása";
+}
+<h2>Foglalás hozzáadása</h2>
+
+
+<partial name="_ReservationTablePartial" model="@Model"/>
+@if (!Model.StartDate.Equals(DateTime.Now.Date))
+{
+    <a asp-controller="Specializations"
+       asp-action="AddReservation"
+       asp-route-id="@Model.SpecializationId"
+       asp-route-dateTimeStr="@Model.StartDate.AddDays(-7).ToUrlCompatibleString()">
+        &lt;&lt; Előző 7 nap
+    </a>
+    <text>-</text>
+}
+<a asp-controller="Specializations" asp-action="AddReservation" asp-route-id="@Model.SpecializationId" asp-route-dateTimeStr="@Model.StartDate.AddDays(7).ToUrlCompatibleString()">Következő 7 nap >></a>
+
+<div class="card mx-auto" style="width: 30vw;">
+    <div class="card-body">
+        <form asp-controller="Specializations" asp-action="AddReservation">
+            <div class="failureNotification">@Html.ValidationSummary(true, "A  sikertelen.")</div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Date)
+                <input asp-for="Date" class="form-control" value="@Model.Date.ToInputString()" min="@DateTime.Now.ToInputString()" max="@(Model.Date.AddDays(6).ToInputString())"/>
+                <span asp-validation-for="Date"></span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Hour)
+                <input asp-for="Hour" placeholder="9-17" class="form-control"/>
+                <span asp-validation-for="Hour"></span>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Comment)
+                <input asp-for="Comment" class="form-control"/>
+                <span asp-validation-for="Comment"></span>
+            </div>
+            <input asp-for="StartDate"/>
+            <input asp-for="SpecializationId"/>
+            <input type="submit" value="Foglalás" class="btn btn-primary"/>
+        </form>
+
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}

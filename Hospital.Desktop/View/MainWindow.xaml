@@ -1,0 +1,39 @@
+﻿<Window x:Class="Hospital.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital.Desktop"
+        xmlns:viewModel="clr-namespace:Hospital.Desktop.ViewModel"
+        xmlns:main="clr-namespace:Hospital.Desktop.ViewModel.Main"
+        mc:Ignorable="d"
+        Title="Magánkórház" Height="450" Width="800" d:DataContext="{d:DesignInstance main:MainViewModel}">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Kijelentkezés" Command="{Binding LogoutCommand}"/>
+            <MenuItem Header="Frissítés" Command="{Binding RefreshCommand}"/>
+        </Menu>
+        <GroupBox Header="Foglalások" Padding="7">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <DataGrid Grid.Row="0" Grid.ColumnSpan="2" ItemsSource="{Binding Reservations}" AutoGenerateColumns="False" SelectedItem="{Binding SelectedRow.Value}" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Időpont" Binding="{Binding DateTime}" />
+                        <DataGridTextColumn Header="Foglaló neve" Binding="{Binding PatientNameState.Value}" />
+                        <DataGridTextColumn Header="Hozzászólás" Binding="{Binding Comment}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button Grid.Row="1" Grid.Column="0" Command="{Binding NewMedicalRecordCommand}">Új kórlap</Button>
+            </Grid>
+        </GroupBox>
+    </DockPanel>
+</Window>

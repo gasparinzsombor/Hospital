@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Hospital.Persistence.Entities.Specialization>
+
+@{
+    ViewBag.Title = "Orvosok";
+}   
+
+<h2>Szakterületek</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(d => d)</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var specialization in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(_ => specialization.Name)</td>
+            <td><a asp-controller="Specializations" asp-action="AddReservation" asp-route-id="@specialization.Id" asp-route-dateTimeStr="@null">Időpontfoglalás</a></td>
+        </tr>
+    }
+    </tbody>
+</table>
+

@@ -1,0 +1,31 @@
+﻿@model Hospital.Models.ViewModels.Reservations.ReservationTableViewModel
+
+<table class="table">
+    <thead>
+    <th></th>
+    @for (var i = 0; i < 7; i++)
+    {
+        <th>@Model.StartDate.Date.AddDays(i).ToShortDateString()</th>
+    }
+    </thead>
+    
+    <tbody>
+    @for (var row = 0; row <= 8; row++)
+    {
+        var hour = row + 9;
+        <tr>
+            <td>@(hour)</td>
+            @for (var col = 0; col < 7; col++)
+            {
+                var date = Model.StartDate.Date.AddDays(col).AddHours(hour);
+                
+                <td class="@Model.CellClass(date)">
+                    
+                </td>
+            }
+        </tr>   
+    }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Hospital.Persistence.Entities.Reservation>
+
+@{
+    ViewBag.Title = "Saját foglalásaim";
+}
+
+<h2>Saját foglalások</h2>
+
+<table class="table">
+    <thead>
+    <th>@Html.DisplayNameFor(r => r.DateTime)</th>
+    <th>@Html.DisplayNameFor(r => r.Doctor)</th>
+    <th>@Html.DisplayNameFor(r => r.Doctor.Specialization)</th>
+    <th>@Html.DisplayNameFor(r => r.Comment)</th>
+    <th></th>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(_ => reservation.DateTime)</td>
+                <td>@Html.DisplayFor(_ => reservation.Doctor.Name)</td>
+                <td>@Html.DisplayFor(_ => reservation.Doctor.Specialization.Name)</td>
+                <td>@Html.DisplayFor(_ => reservation.Comment)</td>
+                <td><a asp-controller="Patients" asp-action="RemoveReservation" asp-route-id="@reservation.Id" asp-route-reservationId="">Foglalás törlése</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Hospital.Persistence.Entities.Doctor>
+
+@{
+    ViewBag.Title = "Orvosok";
+}   
+
+<h2>Orvosok</h2>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(d => d.Name)</th>
+        <th>@Html.DisplayNameFor(d => d.Specialization)</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var doctor in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(_ => doctor.Name)</td>
+            <td>@Html.DisplayFor(_ => doctor.Specialization.Name)</td>
+            <td><a asp-controller="Doctors" asp-action="AddReservation" asp-route-id="@doctor.Id" asp-route-dateTimeStr="@null">Időpontfoglalás</a></td>
+        </tr>
+    }
+    </tbody>
+</table>

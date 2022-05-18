@@ -1,0 +1,36 @@
+﻿<Window x:Class="Hospital.Desktop.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:Hospital.Desktop.View"
+        xmlns:viewModel="clr-namespace:Hospital.Desktop.ViewModel"
+        IsVisibleChanged="LoginWindow_OnIsVisibleChanged"
+        mc:Ignorable="d"
+        Title="Bejelentkezés" Height="200" Width="300" d:DataContext="{d:DesignInstance viewModel:LoginViewModel}">
+    <Border Padding="10">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">Bejelentkezés</Label>
+        
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Felhasználónév:</Label>
+        <TextBox x:Name="TextBox1" Grid.Row="1" Grid.Column="1" Height="23" VerticalAlignment="Center" Text="{Binding UserNameState.Value}"></TextBox>
+        
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">Jelszó:</Label>
+        <PasswordBox x:Name="PasswordBox1" Grid.Row="2" Grid.Column="1" ></PasswordBox>
+        
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsDefault="True" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PasswordBox1}">Bejelentkezés</Button>
+    </Grid>
+    </Border>
+</Window>
